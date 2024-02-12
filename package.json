@@ -20,6 +20,10 @@
       {
         "command": "cfpy.uploadFile",
         "title": "upload to CFUNFLASH"
+      },
+      {
+        "command": "cfpy.openWebview",
+        "title": "openWebview"
       }
     ],
     "menus": {
@@ -37,7 +41,13 @@
           "group": "navigation"
         }
       ]
-    }
+    },
+    "snippets": [
+      {
+        "language": "python",
+        "path": "./src/snippets/pyoff.json"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

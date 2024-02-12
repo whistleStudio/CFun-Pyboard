@@ -1,0 +1,10 @@
+{
+  "输出": {
+    "prefix": ["输出", "out"],
+    "body": [
+      "from pyb import Pin\n",
+      "Pin(\"${1:A0}\",Pin.OUT_PP)(${2:0})\n"
+    ],
+    "description": "基本输出，1-高/0-低电平"
+  }
+}
