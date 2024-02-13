@@ -24,6 +24,10 @@
       {
         "command": "cfpy.openWebview",
         "title": "openWebview"
+      },
+      {
+        "command": "cfpy.openApiDoc",
+        "title": "cfpy doc"
       }
     ],
     "menus": {
@@ -31,7 +35,12 @@
         {
           "when": "resourceLangId == python && editorFocus",
           "command": "cfpy.uploadFile",
-          "group": "navigation"
+          "group": "navigation@1"
+        },
+        {
+          "when": "resourceLangId == python && editorFocus",
+          "command": "cfpy.openApiDoc",
+          "group": "navigation@2"
         }
       ],
       "explorer/context": [

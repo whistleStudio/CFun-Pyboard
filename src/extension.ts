@@ -6,8 +6,7 @@ import getSerialport from './core/getSerialport';
 let CF_COM: string | undefined
 
 export function activate(context: vscode.ExtensionContext) {
-	console.log('Congratulations, your extension "cfpy" is now active!');
-	// 默认安装相关py包
+	// 只执行一次, 默认安装相关py包
 	exec('pip install numpy', (error, stdout, stderr) => {
 		if (error) {
 		  vscode.window.showErrorMessage('exec error')
@@ -23,8 +22,9 @@ export function activate(context: vscode.ExtensionContext) {
 			}
 		}
 	  });
-	
-	let disposable = vscode.commands.registerCommand('cfpy.helloWorld', async () => {
+
+	// 串口选择
+	const getSp = vscode.commands.registerCommand('cfpy.helloWorld', async () => {
 		vscode.window.showInformationMessage('Hello World from cfpy!');
 		let portList = await getSerialport()
 		const quickPick = vscode.window.createQuickPick()
@@ -36,6 +36,7 @@ export function activate(context: vscode.ExtensionContext) {
 		quickPick.onDidHide(() => quickPick.dispose())
 		quickPick.show()
 	});
+
 	// 离线上传文件
 	const uploadFile = vscode.commands.registerCommand("cfpy.uploadFile", uri => {
 		if (uri) {
@@ -43,8 +44,13 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	})
 
-	context.subscriptions.push(vscode.commands.registerCommand('cfpy.openWebview', uri => {
-		// 创建webview
+	// 离线上传项目文件夹
+	const uploadDir = vscode.commands.registerCommand("cfpy.uploadDir", () => {
+		
+	})
+
+	// 创建webview
+	const createWv = vscode.commands.registerCommand('cfpy.openWebview', uri => {
 		const panel = vscode.window.createWebviewPanel(
 			'testWebview', // viewType
 			"WebView演示", // 视图标题
@@ -55,7 +61,14 @@ export function activate(context: vscode.ExtensionContext) {
 			}
 		);
 		panel.webview.html = `<html><body>你好，我是Webview</body></html>`
-	}))				
-	context.subscriptions.push(disposable, uploadFile);
+	})
+
+	// 打开接口文档
+	const openApiDoc = vscode.commands.registerCommand("cfpy.openApiDoc", () => {
+		exec("start https://docs.micropython.org/en/latest/library/index.html")
+	})
+	
+	
+	context.subscriptions.push(getSp, uploadFile, createWv, openApiDoc);
 }
 
