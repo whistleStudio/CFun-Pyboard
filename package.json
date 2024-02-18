@@ -19,7 +19,11 @@
       },
       {
         "command": "cfpy.uploadFile",
-        "title": "upload to CFUNFLASH"
+        "title": "上传文件"
+      },
+      {
+        "command": "cfpy.uploadProject",
+        "title": "上传项目"
       },
       {
         "command": "cfpy.openWebview",
@@ -47,6 +51,11 @@
         {
           "when": "resourceLangId == python",
           "command": "cfpy.uploadFile",
+          "group": "navigation"
+        },
+        {
+          "when": "explorerResourceIsFolder",
+          "command": "cfpy.uploadProject",
           "group": "navigation"
         }
       ]

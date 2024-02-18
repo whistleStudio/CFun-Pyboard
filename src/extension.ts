@@ -28,7 +28,7 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.window.showInformationMessage('Hello World from cfpy!');
 		let portList = await getSerialport()
 		const quickPick = vscode.window.createQuickPick()
-		quickPick.items = portList.map(v=>({label: v}));
+		quickPick.items = portList.map(v => ({label: v}));
 		quickPick.onDidChangeSelection(e => {
 			console.log(e); 
 			CF_COM = e[0].label
@@ -40,13 +40,13 @@ export function activate(context: vscode.ExtensionContext) {
 	// 离线上传文件
 	const uploadFile = vscode.commands.registerCommand("cfpy.uploadFile", uri => {
 		if (uri) {
-			upToCF(uri.path)
+			upToCF.uploadFile(uri.path)
 		}
 	})
 
 	// 离线上传项目文件夹
-	const uploadDir = vscode.commands.registerCommand("cfpy.uploadDir", () => {
-		
+	const uploadDir = vscode.commands.registerCommand("cfpy.uploadProject", uri => {
+		upToCF.uploadProject(uri.path)
 	})
 
 	// 创建webview
@@ -69,6 +69,6 @@ export function activate(context: vscode.ExtensionContext) {
 	})
 	
 	
-	context.subscriptions.push(getSp, uploadFile, createWv, openApiDoc);
+	context.subscriptions.push(getSp, uploadFile, uploadDir, createWv, openApiDoc);
 }
 
