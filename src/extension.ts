@@ -6,26 +6,31 @@ import getSerialport from './core/getSerialport';
 let CF_COM: string | undefined
 
 export function activate(context: vscode.ExtensionContext) {
-	// 只执行一次, 默认安装相关py包
-	exec('pip install numpy', (error, stdout, stderr) => {
+	// console.log(context.asAbsolutePath)
+	// console.log(context.extensionPath)
+	// console.log(context.extensionUri)
+
+	// 只执行一次, 默认安装相关py包 pip install ./src/pyblib/pyb-0.0.0-py3-none-any.whl
+	exec(`pip install ${context.extensionPath}/src/pyblib/pyb-0.0.0-py3-none-any.whl`, (error, stdout, stderr) => {
 		if (error) {
-		  vscode.window.showErrorMessage('exec error')
+			console.log(error)
+		  vscode.window.showErrorMessage('脚本运行错误')
 		  return;
 		} else if(stderr) {
-			vscode.window.showErrorMessage('std error')
+			vscode.window.showErrorMessage('pyb库安装失败')
 			return;
 		}
 		else {
-			const re = /Successfully\s*installed\s*numpy/
+			const re = /Successfully\s*installed\s*pyb/
+			console.log(stdout)
 			if (re.test(stdout)) {
-				vscode.window.showInformationMessage('Successfully installed numpy')
+				vscode.window.showInformationMessage('pyb包安装成功')
 			}
 		}
 	  });
 
 	// 串口选择
-	const getSp = vscode.commands.registerCommand('cfpy.helloWorld', async () => {
-		vscode.window.showInformationMessage('Hello World from cfpy!');
+	const getSp = vscode.commands.registerCommand('cfpy.portSelect', async () => {
 		let portList = await getSerialport()
 		const quickPick = vscode.window.createQuickPick()
 		quickPick.items = portList.map(v => ({label: v}));

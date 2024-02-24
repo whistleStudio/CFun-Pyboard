@@ -1,8 +1,10 @@
 {
-  "name": "cfpy",
-  "displayName": "cfpy",
+  "name": "cfpyb",
+  "displayName": "cfpyb",
   "description": "",
   "version": "0.0.1",
+  "icon": "./images/cfpyb-icon.png",
+  "publisher": "whistleWang",
   "engines": {
     "vscode": "^1.86.0"
   },
@@ -14,8 +16,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "cfpy.helloWorld",
-        "title": "Hello World"
+        "command": "cfpy.portSelect",
+        "title": "选择串口"
       },
       {
         "command": "cfpy.uploadFile",
@@ -31,7 +33,7 @@
       },
       {
         "command": "cfpy.openApiDoc",
-        "title": "cfpy doc"
+        "title": "cfpy文档说明"
       }
     ],
     "menus": {
