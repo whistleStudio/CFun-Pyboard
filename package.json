@@ -2,7 +2,7 @@
   "name": "cfpyb",
   "displayName": "cfpyb",
   "description": "",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "icon": "./images/cfpyb-icon.png",
   "publisher": "whistleWang",
   "engines": {
