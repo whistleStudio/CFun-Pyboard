@@ -3,10 +3,14 @@
   "displayName": "cfpyb",
   "description": "",
   "version": "0.1.0",
-  "icon": "./images/cfpyb-icon.png",
-  "publisher": "whistleWang",
+  "icon": "./src/img/cfpyb-icon.png",
+  "publisher": "WhistleWang",
   "engines": {
     "vscode": "^1.86.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/whistleStudio/CFun-Pyboard.git" 
   },
   "categories": [
     "Other"
@@ -16,48 +20,52 @@
   "contributes": {
     "commands": [
       {
-        "command": "cfpy.portSelect",
+        "command": "cfpyb.selectSp",
         "title": "选择串口"
       },
       {
-        "command": "cfpy.uploadFile",
+        "command": "cfpyb.listenSp",
+        "title": "监听串口"
+      },
+      {
+        "command": "cfpyb.uploadFile",
         "title": "上传文件"
       },
       {
-        "command": "cfpy.uploadProject",
+        "command": "cfpyb.uploadProject",
         "title": "上传项目"
       },
       {
-        "command": "cfpy.openWebview",
-        "title": "openWebview"
+        "command": "cfpyb.openApiDoc",
+        "title": "cfpy文档说明"
       },
       {
-        "command": "cfpy.openApiDoc",
-        "title": "cfpy文档说明"
+        "command": "cfpyb.installPyb",
+        "title": "安装pyb库"
       }
     ],
     "menus": {
       "editor/context": [
         {
           "when": "resourceLangId == python && editorFocus",
-          "command": "cfpy.uploadFile",
+          "command": "cfpyb.uploadFile",
           "group": "navigation@1"
         },
         {
           "when": "resourceLangId == python && editorFocus",
-          "command": "cfpy.openApiDoc",
+          "command": "cfpyb.openApiDoc",
           "group": "navigation@2"
         }
       ],
       "explorer/context": [
         {
           "when": "resourceLangId == python",
-          "command": "cfpy.uploadFile",
+          "command": "cfpyb.uploadFile",
           "group": "navigation"
         },
         {
           "when": "explorerResourceIsFolder",
-          "command": "cfpy.uploadProject",
+          "command": "cfpyb.uploadProject",
           "group": "navigation"
         }
       ]
