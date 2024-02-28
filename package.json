@@ -21,11 +21,11 @@
     "commands": [
       {
         "command": "cfpyb.selectSp",
-        "title": "选择串口"
+        "title": "串口选择"
       },
       {
-        "command": "cfpyb.listenSp",
-        "title": "监听串口"
+        "command": "cfpyb.enterRepl",
+        "title": "在线调试"
       },
       {
         "command": "cfpyb.uploadFile",
@@ -42,6 +42,10 @@
       {
         "command": "cfpyb.installPyb",
         "title": "安装pyb库"
+      },
+      {
+        "command": "cfpyb.reboot",
+        "title": "设备重启"
       }
     ],
     "menus": {

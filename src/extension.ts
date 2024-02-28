@@ -7,10 +7,11 @@ import setupPyb from './core/setupPyb';
 export function activate(context: vscode.ExtensionContext) {
 	// 只执行一次, 默认安装相关py包 pip install ./src/pyblib/pyb-0.0.0-py3-none-any.whl
 	setupPyb.installPyb(context)
+	setupPyb.installTerminalS()
 	
 	// 安装pyb库
 	const installPyb = vscode.commands.registerCommand("cfpyb.installPyb", () => {
-		setupPyb.installPyb(context)
+		setupPyb.installPyb(context, true)
 	})
 
 
@@ -19,21 +20,26 @@ export function activate(context: vscode.ExtensionContext) {
 		opSerialport.selectSp()
 	});
 
-	// 串口监听
-	const listenSp = vscode.commands.registerCommand("cfpyb.listenSp", async () => {
-		opSerialport.listenSp()
+	// 在线调试
+	const enterRepl = vscode.commands.registerCommand("cfpyb.enterRepl", async () => {
+		opSerialport.enterRepl()
+	})
+
+	// 重启
+	const reboot = vscode.commands.registerCommand("cfpyb.reboot", () => {
+		// opSerialport.doAndReboot()
 	})
 
 	// 离线上传文件
 	const uploadFile = vscode.commands.registerCommand("cfpyb.uploadFile", uri => {
-		if (uri) {
-			upToCF.uploadFile(uri.path)
-		}
+		if (uri) upToCF.uploadFile(uri.path)
 	})
+
+	// 离线上传文件并运行
 
 	// 离线上传项目文件夹
 	const uploadDir = vscode.commands.registerCommand("cfpyb.uploadProject", uri => {
-		upToCF.uploadProject(uri.path)
+		if (uri) upToCF.uploadProject(uri.path)
 	})
 
 	// 创建webview
@@ -56,7 +62,7 @@ export function activate(context: vscode.ExtensionContext) {
 	})
 	
 	
-	context.subscriptions.push(selectSp, listenSp, uploadFile, uploadDir, openApiDoc, installPyb);
+	context.subscriptions.push(selectSp, enterRepl, uploadFile, uploadDir, openApiDoc, installPyb, reboot);
 }
 
 
