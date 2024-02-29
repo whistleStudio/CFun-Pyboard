@@ -21,11 +21,19 @@
     "commands": [
       {
         "command": "cfpyb.selectSp",
-        "title": "串口选择"
+        "title": "串口选择",
+        "icon": {
+          "light": "./src/img/connect-light.png",
+          "dark": "./src/img/connect-dark.png"
+        }
       },
       {
         "command": "cfpyb.enterRepl",
-        "title": "在线调试"
+        "title": "在线调试",
+        "icon": {
+          "light": "./src/img/repl-light.png",
+          "dark": "./src/img/repl-dark.png"
+        }
       },
       {
         "command": "cfpyb.uploadFile",
@@ -37,7 +45,7 @@
       },
       {
         "command": "cfpyb.openApiDoc",
-        "title": "cfpy文档说明"
+        "title": "文档说明"
       },
       {
         "command": "cfpyb.installPyb",
@@ -49,6 +57,18 @@
       }
     ],
     "menus": {
+      "editor/title": [
+        {
+          "when": "resourceLangId == python",
+          "command": "cfpyb.selectSp",
+          "group": "navigation@1"
+        },
+        {
+          "when": "resourceLangId == python",
+          "command": "cfpyb.enterRepl",
+          "group": "navigation@2"
+        }
+      ],
       "editor/context": [
         {
           "when": "resourceLangId == python && editorFocus",
@@ -58,7 +78,7 @@
         {
           "when": "resourceLangId == python && editorFocus",
           "command": "cfpyb.openApiDoc",
-          "group": "navigation@2"
+          "group": "navigation@1"
         }
       ],
       "explorer/context": [
@@ -74,10 +94,46 @@
         }
       ]
     },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "cfpyb-example",
+          "title": "示例代码",
+          "icon": "./src/img/example.png"
+        }
+      ]
+    },
+    "views": {
+      "cfpyb-example": [
+        {
+          "id": "e0",
+          "name": "硬件基础"
+        },
+        {
+          "id": "e1",
+          "name": "传感器"
+        },
+        {
+          "id": "e2",
+          "name": "显示"
+        },
+        {
+          "id": "e3",
+          "name": "放音"
+        }
+      ]
+    },
     "snippets": [
       {
         "language": "python",
         "path": "./src/snippets/pyoff.json"
+      }
+    ],
+    "keybindings":[
+      {
+        "when": "resourceLangId == python && editorFocus",
+        "command": "cfpyb.uploadFile",
+        "key": "ctrl+alt+r"
       }
     ]
   },
