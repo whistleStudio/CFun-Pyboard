@@ -5,6 +5,7 @@ import opSerialport from './core/opSerialport';
 import setupPyb from './core/setupPyb';
 import { ExampleTreeDataProvider, openExampleDoc } from './core/exampleTreeDataProvider';
 import { toc } from './examples/toc';
+import opPicture from './core/opPicture';
 
 export function activate(context: vscode.ExtensionContext) {
 	// 只执行一次, 默认安装相关py包 pip install ./src/pyblib/pyb-0.0.0-py3-none-any.whl
@@ -43,20 +44,6 @@ export function activate(context: vscode.ExtensionContext) {
 		if (uri) upToCF.uploadProject(uri.path)
 	})
 
-	// 创建webview
-	// const createWv = vscode.commands.registerCommand('cfpy.openWebview', uri => {
-	// 	const panel = vscode.window.createWebviewPanel(
-	// 		'testWebview', // viewType
-	// 		"WebView演示", // 视图标题
-	// 		vscode.ViewColumn.One, // 显示在编辑器的哪个部位
-	// 		{
-	// 			enableScripts: true, // 启用JS，默认禁用
-	// 			retainContextWhenHidden: true, // webview被隐藏时保持状态，避免被重置
-	// 		}
-	// 	);
-	// 	panel.webview.html = `<html><body>你好，我是Webview</body></html>`
-	// })
-
 	/* 7. 打开接口文档 */
 	const openApiDoc = vscode.commands.registerCommand("cfpyb.openApiDoc", () => {
 		exec("start https://docs.micropython.org/en/latest/library/index.html")
@@ -67,15 +54,25 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.window.registerTreeDataProvider(i, new ExampleTreeDataProvider(context, i))
 	}
 
-	
-
 	/* 9. 打开示例 */
 	vscode.commands.registerCommand("cfpyb.openExample", (item: vscode.TreeItem) => {
 		openExampleDoc(item)
 	} )
 
+	/* 10. 图片转化 */
+	const opPic = vscode.commands.registerCommand("cfpyb.opPic", uri => {
+		// console.log(uri)
+		opPicture.toBmp(uri.path)
+	} )	
+
+	/* 11. 图片批量处理 */
+	const opPicBatch = vscode.commands.registerCommand("cfpyb.opPicBatch", uri => {
+		console.log("xxxxxxxxxxxx")
+		opPicture.toBmpBatch(uri.path)
+	})
+
 	context.subscriptions.push(selectSp, enterRepl, uploadFile, uploadDir, 
-		openApiDoc, installPyb, reboot);
+		openApiDoc, installPyb, reboot, opPic, opPicBatch);
 }
 
 

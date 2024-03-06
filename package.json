@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/whistleStudio/CFun-Pyboard.git" 
+    "url": "https://github.com/whistleStudio/CFun-Pyboard.git"
   },
   "categories": [
     "Other"
@@ -54,6 +54,14 @@
       {
         "command": "cfpyb.reboot",
         "title": "设备重启"
+      },
+      {
+        "command": "cfpyb.opPic",
+        "title": "图片转化"
+      },
+      {
+        "command": "cfpyb.opPicBatch",
+        "title": "图片批量处理"
       }
     ],
     "menus": {
@@ -88,8 +96,18 @@
           "group": "navigation"
         },
         {
-          "when": "explorerResourceIsFolder",
+          "when": "explorerResourceIsFolder && filesExplorerFocus",
           "command": "cfpyb.uploadProject",
+          "group": "navigation"
+        },
+        {
+          "when": "resourceDirname =~ /picture/ && (resourceExtname == .jpg || resourceExtname == .jpeg || resourceExtname == .png)",
+          "command": "cfpyb.opPic",
+          "group": "navigation"
+        },
+        {
+          "when": "explorerResourceIsFolder && resourcePath =~ /picture$/",
+          "command": "cfpyb.opPicBatch",
           "group": "navigation"
         }
       ]
@@ -129,7 +147,7 @@
         "path": "./src/snippets/pyoff.json"
       }
     ],
-    "keybindings":[
+    "keybindings": [
       {
         "when": "resourceLangId == python && editorFocus",
         "command": "cfpyb.uploadFile",
@@ -157,6 +175,8 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@wokwi/bmp-ts": "^3.0.0",
+    "jimp": "^0.22.12",
     "serialport": "^12.0.0"
   }
 }

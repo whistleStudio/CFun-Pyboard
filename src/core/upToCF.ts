@@ -6,34 +6,10 @@ import opSerialport from "./opSerialport";
 
 
 const ignoreFiles = ["README.txt", "pybcdc.inf", "boot.py"]
-const ignoreDir = ["picture"]
-
-// 递归复制文件夹
-function copyDir (cpPath: string, destPath: string) {
-  const files = fs.readdirSync(cpPath) 
-  files.forEach(v => {
-    const curCp = path.resolve(cpPath, v)
-    const curDest = path.resolve(destPath, v)
-    fs.stat(curCp, (err, stats) => {
-      if (!err) {
-        // 复制文件
-        if (stats.isFile()) {
-          if (ignoreFiles.indexOf(v) < 0) fs.createReadStream(curCp).pipe(fs.createWriteStream(curDest));
-        }
-        // 复制目录 
-        else if (stats.isDirectory()) {
-          if (ignoreDir.indexOf(v) < 0) {
-            fs.mkdirSync(curDest, {recursive: true})
-            copyDir(curCp, curDest)
-          }
-        }
-      }
-    })
-  })
-}
+const ignoreDir = [".vscode"]
 
 export default {
-  /* 上传文件 */
+  /* 1. 上传文件 */
   uploadFile: async (curFileUri: string) => {
     if (opSerialport.get_CF_COM()) {
       curFileUri = curFileUri.slice(1)
@@ -56,7 +32,7 @@ export default {
       }
     } else { vscode.window.showErrorMessage("请先连接串口") }
   },
-  /* 上传项目 */
+  /* 2. 上传项目 */
   uploadProject: (curProjUri: string) => {
     if (opSerialport.get_CF_COM()) {
       curProjUri = curProjUri.slice(1)
@@ -82,5 +58,29 @@ export default {
       })
     } else { vscode.window.showErrorMessage("请先连接串口") }
   }
-
 } 
+
+// 递归复制文件夹
+function copyDir (cpPath: string, destPath: string) {
+  const files = fs.readdirSync(cpPath) 
+  files.forEach(v => {
+    const curCp = path.resolve(cpPath, v)
+    const curDest = path.resolve(destPath, v)
+    fs.stat(curCp, (err, stats) => {
+      if (!err) {
+        // 复制文件
+        if (stats.isFile()) {
+          const reg = /\.(png|jpg|jpeg)$/ //传图片时用
+          if (ignoreFiles.indexOf(v) < 0 && !reg.test(v)) fs.createReadStream(curCp).pipe(fs.createWriteStream(curDest));
+        }
+        // 复制目录 
+        else if (stats.isDirectory()) {
+          if (ignoreDir.indexOf(v) < 0) {
+            fs.mkdirSync(curDest, {recursive: true}) 
+            copyDir(curCp, curDest)
+          }
+        }
+      }
+    })
+  })
+}
