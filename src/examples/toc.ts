@@ -1,21 +1,21 @@
 export const toc = {
   e0: [
-    { title: "板载灯闪烁", des:"Hello CFunWorld"},
-    { title: "呼吸灯"},
-    { title: "随机七彩灯"},
-    { title: "按钮控制灯"},
-    { title: "按钮控制灯2"},
-    { title: "蜂鸣器发声", des:"数字输出"},
-    { title: "声控灯", des:"模拟输入"}
+    { title: "blink", des:"Hello CFunWorld"},
+    { title: "breathLed", des: "呼吸灯"},
+    { title: "randomColorLed", des: "随机七彩灯"},
+    { title: "btnLed", des: "按钮控制灯"},
+    { title: "btnLed2", des: "按钮控制灯2"},
+    { title: "buzzer", des:"有源蜂鸣器发声"},
+    { title: "voiceLed", des:"声控灯"}
   ],
   e1: [
-    { title: "温湿度监测"},
-    { title: "超声波预警"}
+    { title: "temHum", des: "温湿度监测"},
+    { title: "ultrasonic", des: "超声波预警"}
   ],
   e2: [
-    {title: "板载屏显示连环画"},
+    {title: "oledShowPic", des: "板载屏显示连环画"},
   ],
   e3: [
-    { title: "MP3播放音乐" }
+    { title: "mp3Play", des: "MP3播放音乐" }
   ]
 }
