@@ -1,4 +1,7 @@
-""" 呼吸灯 """
+""" 
+呼吸灯: 红灯渐强渐弱 
+"""
+
 from pyb import RGBLED
 from time import sleep
 

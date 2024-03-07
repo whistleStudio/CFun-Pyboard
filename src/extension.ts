@@ -46,7 +46,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	/* 7. 打开接口文档 */
 	const openApiDoc = vscode.commands.registerCommand("cfpyb.openApiDoc", () => {
-		exec("start https://docs.micropython.org/en/latest/library/index.html")
+		exec("start https://cfunworld.com/#/documents")
 	})
 	
 	/* 8. 侧边栏示例 */
