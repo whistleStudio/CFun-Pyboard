@@ -1,5 +1,3 @@
-[toc]
-
 # cfpyb插件 - 创趣智能硬件编程助手
 
 ## 介绍
@@ -16,7 +14,9 @@
 - 提供丰富的代码示例
 - 参考文档快速链接
 
+<br>
 
+<br>
 
 ## 准备工作
 
@@ -29,13 +29,13 @@ python相关的系统环境配置就不赘述了，网上资料有很多
 [百度网盘python3.12.2]链接：https://pan.baidu.com/s/1hf7XskfIvzsR6qXwgv62vQ 
 提取码：qo2e 
 
-
+<br>
 
 **2)  安装vscode Python插件并选择对应解释器**
 
 <img src="https://whistlestudio-1300400818.cos.ap-nanjing.myqcloud.com/cfun/cfpyb-ext/readme/python%E6%8F%92%E4%BB%B6.png" alt="python插件" style="zoom: 80%;" />
 
-
+<br>
 
 **3）安装vscode Pylance插件**
 
@@ -43,19 +43,21 @@ python相关的系统环境配置就不赘述了，网上资料有很多
 
 <video src="https://whistlestudio-1300400818.cos.ap-nanjing.myqcloud.com/cfun/cfpyb-ext/readme/pylance.mp4" controls></video>
 
-
+<br>
 
 **4）串口选择**
 
 上传文件、上传项目、在线调试功能需先连接串口。
 
-以智能控制器为例，打开设备并拨至  <img src="https://whistlestudio-1300400818.cos.ap-nanjing.myqcloud.com/cfun/cfpyb-ext/readme/download.png" alt="图标-01" style="zoom: 50%;" /> 档位；
+以智能控制器为例，打开设备并将其拨至离线下载档位；
 
-使用数据线连接电脑后，在vscode中点击代码编辑区右上角<img src="https://whistlestudio-1300400818.cos.ap-nanjing.myqcloud.com/cfun/cfpyb-ext/readme/connect-light.png" alt="connect-light" style="zoom:28%;" /> 选择相应串口
+使用数据线连接电脑后，在vscode中点击代码编辑区右上角串口选择图标选择相应串口
 
-<video src="README.assets/串口选择.mp4" controls></video>
+<video src="https://whistlestudio-1300400818.cos.ap-nanjing.myqcloud.com/cfun/cfpyb-ext/readme/%E4%B8%B2%E5%8F%A3%E9%80%89%E6%8B%A9.mp4" controls></video>
 
+<br>
 
+<br>
 
 ## 功能概述
 
@@ -65,7 +67,7 @@ python相关的系统环境配置就不赘述了，网上资料有很多
 
 <video src="https://whistlestudio-1300400818.cos.ap-nanjing.myqcloud.com/cfun/cfpyb-ext/readme/%E4%BB%A3%E7%A0%81%E8%A1%A5%E5%85%A8.mp4" controls></video>
 
-
+<br>
 
 ### 📄 上传文件 - 单个python程序上传并软重启 [Ctrl+Alt+R]
 
@@ -73,7 +75,7 @@ python相关的系统环境配置就不赘述了，网上资料有很多
 
 <video src="https://whistlestudio-1300400818.cos.ap-nanjing.myqcloud.com/cfun/cfpyb-ext/readme/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6.mp4" controls></video>
 
-
+<br>
 
 ### 📂 上传项目 - 整个项目文件夹上传并软重启
 
@@ -83,7 +85,7 @@ python相关的系统环境配置就不赘述了，网上资料有很多
 
 <video src="https://whistlestudio-1300400818.cos.ap-nanjing.myqcloud.com/cfun/cfpyb-ext/readme/%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE.mp4" controls></video>
 
-
+<br>
 
 ### 🗔  在线调试 - Repl交互调试模式
 
@@ -99,7 +101,7 @@ REPL (read-eval-print-loop)交互式调试。串口已连接状态下，单击vs
 
 <video src="https://whistlestudio-1300400818.cos.ap-nanjing.myqcloud.com/cfun/cfpyb-ext/readme/repl.mp4" controls></video>
 
-
+<br>
 
 ### 🖼️ 图片转化 - 单个图像文件转.bmp格式
 
@@ -111,7 +113,7 @@ REPL (read-eval-print-loop)交互式调试。串口已连接状态下，单击vs
 
 <video src="https://whistlestudio-1300400818.cos.ap-nanjing.myqcloud.com/cfun/cfpyb-ext/readme/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86.mp4" controls></video>
 
-
+<br>
 
 ### 🌰 示例代码
 
@@ -119,13 +121,17 @@ REPL (read-eval-print-loop)交互式调试。串口已连接状态下，单击vs
 
 <video src="https://whistlestudio-1300400818.cos.ap-nanjing.myqcloud.com/cfun/cfpyb-ext/readme/%E7%A4%BA%E4%BE%8B.mp4" controls></video>
 
-
+<br>
 
 ### 🕮 文档说明
 
 提供硬件模块参数功能详细说明 (api接口文档后续增加...)
 
 <video src="https://whistlestudio-1300400818.cos.ap-nanjing.myqcloud.com/cfun/cfpyb-ext/readme/%E6%96%87%E6%A1%A3%E8%AF%B4%E6%98%8E.mp4" controls></video>
+
+<br>
+
+<br>
 
 ## 联系与支持
 
@@ -135,7 +141,7 @@ REPL (read-eval-print-loop)交互式调试。串口已连接状态下，单击vs
 
 微信号: WhistleStudio
 
-<img src="https://whistlestudio-1300400818.cos.ap-nanjing.myqcloud.com/cfun/cfpyb-ext/readme/whistlewx.png" style="zoom: 50%;" />
+<img src="https://whistlestudio-1300400818.cos.ap-nanjing.myqcloud.com/cfun/cfpyb-ext/readme/herewhistle.png" style="width: 20%; float: left" />
 
 
 
