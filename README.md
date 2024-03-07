@@ -137,11 +137,11 @@ REPL (read-eval-print-loop)交互式调试。串口已连接状态下，单击vs
 
 如有使用疑问或技术交流，欢迎联系👇
 
-作者: whistle汪
+作者: Whistle Wang
 
 微信号: WhistleStudio
 
-<img src="https://whistlestudio-1300400818.cos.ap-nanjing.myqcloud.com/cfun/cfpyb-ext/readme/herewhistle.png" style="width: 20%; float: left" />
+<img src="https://whistlestudio-1300400818.cos.ap-nanjing.myqcloud.com/cfun/cfpyb-ext/readme/whistleicon.png" style="float: left" />
 
 
 
