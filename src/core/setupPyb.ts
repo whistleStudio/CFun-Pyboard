@@ -6,7 +6,7 @@ export default {
   installPyb: function (context: vscode.ExtensionContext, isForce = false) {
     let cmd = isForce ? `${context.extensionPath}/src/pyblib/pyb-0.0.0-py3-none-any.whl --force-reinstall` : `${context.extensionPath}/src/pyblib/pyb-0.0.0-py3-none-any.whl`
     let hint = isForce ? `更新` : `安装`
-    exec(`pip install ${cmd}`, (error, stdout, stderr) => {
+    exec(`pip3 install ${cmd}`, (error, stdout, stderr) => {
       if (error) {
         console.log(error)
         vscode.window.showErrorMessage(`脚本运行错误\nerr:${error}`)
@@ -28,7 +28,7 @@ export default {
   // !!! 细化已安装的状态
   /* 2. 安装terminal-s */
   installTerminalS: () => {
-    exec("pip install terminal-s", (error, stdout, stderr) => {
+    exec("pip3 install terminal-s", (error, stdout, stderr) => {
       if (error) {
         console.log(error)
         vscode.window.showErrorMessage(`脚本运行错误\nerr:${error}`)
