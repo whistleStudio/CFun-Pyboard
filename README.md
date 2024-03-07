@@ -89,7 +89,7 @@ python相关的系统环境配置就不赘述了，网上资料有很多
 
 ### 🗔  在线调试 - Repl交互调试模式
 
-REPL (read-eval-print-loop)交互式调试。串口已连接状态下，单击vscode编辑区右上角<img src="README.assets/repl-light.png" alt="repl-light" style="zoom:33%;" />进入此模式，调试窗口输入符合python语法规范的语句，会立即执行得到反馈。
+REPL (read-eval-print-loop)交互式调试。串口已连接状态下，当编写`.py`文件时，可点击编辑区右上角在线调试图标进入此模式，调试窗口输入语句，会立即执行得到反馈。
 
 更多Repl模式操作参考：http://micropython.com.cn/en/latet/reference/repl.html
 
