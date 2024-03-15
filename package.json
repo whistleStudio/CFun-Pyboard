@@ -2,7 +2,7 @@
   "name": "cfpyb",
   "displayName": "cfpyb",
   "description": "an extension for CFunWorld products",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "icon": "./src/img/cfpyb-icon.png",
   "publisher": "WhistleWang",
   "engines": {
@@ -15,7 +15,9 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": ["onStartupFinished"],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
