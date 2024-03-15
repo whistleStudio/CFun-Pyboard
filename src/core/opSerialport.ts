@@ -26,7 +26,7 @@ export default {
   },
   
   /* 2. 在线模式repl */
-  enterRepl: async (mode = 1) => {
+  enterRepl: async () => {
     const portInfo = await SerialPort.list();
     let portList = portInfo.filter(v => v.serialNumber).map(v => v.path)
     if (CF_COM) {

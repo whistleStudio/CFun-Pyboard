@@ -31,13 +31,13 @@ python相关的系统环境配置就不赘述了，网上资料有很多
 
 <br>
 
-**2)  安装vscode Python插件并选择对应解释器**
+**2)  安装vscode Python扩展并选择对应解释器**
 
 <img src="https://whistlestudio-1300400818.cos.ap-nanjing.myqcloud.com/cfun/cfpyb-ext/readme/python%E6%8F%92%E4%BB%B6.png" alt="python插件" style="zoom: 80%;" />
 
 <br>
 
-**3）安装vscode Pylance插件**
+**3）安装vscode Pylance扩展（安装Python扩展时会自动安装此项）**
 
 开启类型检查功能，初次安装有时需要重启vscode才会生效
 
@@ -59,6 +59,8 @@ python相关的系统环境配置就不赘述了，网上资料有很多
 
 <br>
 
+<br>
+
 ## 功能概述
 
 ### ✔️ 代码智能补全与语法检查
@@ -66,6 +68,8 @@ python相关的系统环境配置就不赘述了，网上资料有很多
 基于创趣pyb库的代码智能补全和语法检查，有助于开发者在编写代码的同时查看对应的API参数提示，借助Pylance等语法检查工具将收获更加严谨的编程体验。
 
 <img src="https://whistlestudio-1300400818.cos.ap-nanjing.myqcloud.com/cfun/cfpyb-ext/readme/代码补全.gif"/>
+
+<br>
 
 <br>
 
@@ -77,6 +81,8 @@ python相关的系统环境配置就不赘述了，网上资料有很多
 
 <br>
 
+<br>
+
 ### 📂 上传项目 - 整个项目文件夹上传并软重启
 
 串口已连接状态下，支持根目录包含`main.py`（程序入口文件）的文件夹整体上传至主控并立即执行程序。
@@ -84,6 +90,18 @@ python相关的系统环境配置就不赘述了，网上资料有很多
 *注意：该上传过程中会自动忽略"README.txt", "pybcdc.inf", "boot.py"文件以及“.vscode”文件夹*
 
 <img src="https://whistlestudio-1300400818.cos.ap-nanjing.myqcloud.com/cfun/cfpyb-ext/readme/上传项目.gif"/>
+
+<br>
+
+<br>
+
+### 🔄 重置主控 
+
+当编写`.py`文件时，可点击编辑区右上角重置主控图标，将设备内部存储还原至出厂状态
+
+<img src="https://whistlestudio-1300400818.cos.ap-nanjing.myqcloud.com/cfun/cfpyb-ext/readme/%E4%B8%BB%E6%8E%A7%E9%87%8D%E7%BD%AE.png">
+
+<br>
 
 <br>
 
@@ -103,6 +121,8 @@ REPL (read-eval-print-loop)交互式调试。串口已连接状态下，当编�
 
 <br>
 
+<br>
+
 ### 🖼️ 图片转化 - 单个图像文件转.bmp格式
 
 支持picture文件夹下，单个任意尺寸`.jpg|.jpeg|.png`格式图像转128x64`.bmp`
@@ -115,6 +135,8 @@ REPL (read-eval-print-loop)交互式调试。串口已连接状态下，当编�
 
 <br>
 
+<br>
+
 ### 🌰 示例代码
 
 提供经典硬件控制案例代码，帮助开发者快速入门(案例扩充中...)
@@ -123,11 +145,15 @@ REPL (read-eval-print-loop)交互式调试。串口已连接状态下，当编�
 
 <br>
 
+<br>
+
 ### 🕮 文档说明
 
 提供硬件模块参数功能详细说明 (api接口文档后续增加...)
 
 <img src="https://whistlestudio-1300400818.cos.ap-nanjing.myqcloud.com/cfun/cfpyb-ext/readme/文档说明.gif"/>
+
+<br>
 
 <br>
 

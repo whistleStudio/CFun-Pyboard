@@ -32,6 +32,7 @@ export default {
       }
     } else { vscode.window.showErrorMessage("请先连接串口") }
   },
+
   /* 2. 上传项目 */
   uploadProject: (curProjUri: string) => {
     if (opSerialport.get_CF_COM()) {
@@ -57,11 +58,31 @@ export default {
         } else vscode.window.showErrorMessage("项目读取失败")
       })
     } else { vscode.window.showErrorMessage("请先连接串口") }
+  },
+
+  /* 3. 还原pyb */
+  recoverPyb: async (context: vscode.ExtensionContext) => {
+    const targetDrive = await getTargetDrive("CFUNFLASH")
+    if (targetDrive) {
+      vscode.window.showWarningMessage("确定要还原主控吗", "是", "否")
+      .then(select => {
+        if (select == "是") try {
+          console.log(targetDrive)
+          rmAndCp(`${targetDrive}:/`, `${context.extensionPath}/src/original`)
+        } catch(e) {
+          // 连续两次会报EPERM错误，暂时未知
+          const reg= /.*EPERM:.*operation.*not.*permitted.*rmdir/
+          if (reg.test(e as string)) {
+            rmAndCp(`${targetDrive}:/`, `${context.extensionPath}/src/original`)
+          } else vscode.window.showErrorMessage(`操作失败\n${e}`)}
+      })
+    } else vscode.window.showErrorMessage("未找到CFUNFLASH")
   }
 } 
 
+
 // 递归复制文件夹
-function copyDir (cpPath: string, destPath: string) {
+function copyDir (cpPath: string, destPath: string, isIgnoreFiles = true) {
   const files = fs.readdirSync(cpPath) 
   files.forEach(v => {
     const curCp = path.resolve(cpPath, v)
@@ -70,8 +91,10 @@ function copyDir (cpPath: string, destPath: string) {
       if (!err) {
         // 复制文件
         if (stats.isFile()) {
-          const reg = /\.(png|jpg|jpeg)$/ //传图片时用
-          if (ignoreFiles.indexOf(v) < 0 && !reg.test(v)) fs.createReadStream(curCp).pipe(fs.createWriteStream(curDest));
+          if (isIgnoreFiles) {
+            const reg = /\.(png|jpg|jpeg)$/ //传图片时用
+            if (ignoreFiles.indexOf(v) < 0 && !reg.test(v)) fs.createReadStream(curCp).pipe(fs.createWriteStream(curDest));
+          } else fs.createReadStream(curCp).pipe(fs.createWriteStream(curDest))
         }
         // 复制目录 
         else if (stats.isDirectory()) {
@@ -83,4 +106,11 @@ function copyDir (cpPath: string, destPath: string) {
       }
     })
   })
+}
+
+// 清空拷贝
+function rmAndCp (rmPath: string, cpPath: string) {
+  fs.rmdirSync(rmPath, {recursive: true})
+  copyDir(cpPath, rmPath, false)
+  vscode.window.showInformationMessage("主控已重置")
 }

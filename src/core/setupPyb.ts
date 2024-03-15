@@ -45,5 +45,41 @@ export default {
         }
       }
     })
+  },
+  /* 3. 初始化安装两个包 */
+  setup: function (context: vscode.ExtensionContext) {
+    suggestInstallExt()
+    this.installPyb(context)
+    this.installTerminalS()
   }
+}
+
+
+// 建议安装
+function suggestInstallExt () {
+  console.log("suggestInstallExt")
+  const regPython = /ms-python.python/, regPylance = /ms-python.vscode-pylance/
+  exec("code --list-extensions", {shell: "powershell.exe"}, (error, stdout, stderr) => {
+    if (!error) {
+      //  安装python插件，会自动安装pylance
+      if (!regPython.test(stdout)) {
+        vscode.window.showInformationMessage("建议安装Microsoft Python扩展", "安装", "算了")
+        .then(select => {
+          if (select == "安装") exec("code --install-extension ms-python.python", {shell: "powershell.exe"})
+        })
+      } else if (!regPylance.test(stdout)) {
+        // 安装pylance插件
+        vscode.window.showInformationMessage("建议安装Microsoft Pylance扩展", "安装", "算了")
+        .then(select => {
+          if (select == "安装") exec("code --install-extension ms-python.vscode-pylance", {shell: "powershell.exe"}, (error, stdout, stderr) => {
+            if (!error) {
+              if (/successfully.*installed/.test(stdout)) {
+                vscode.window.showInformationMessage("Pylance安装成功!  \n你可能需要重启vscode使其生效")
+              }
+            }
+          })
+        })
+      }
+    } else {console.log(error)}
+  })
 }

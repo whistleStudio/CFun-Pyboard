@@ -9,14 +9,12 @@ import opPicture from './core/opPicture';
 
 export function activate(context: vscode.ExtensionContext) {
 	// 只执行一次, 默认安装相关py包 pip install ./src/pyblib/pyb-0.0.0-py3-none-any.whl
-	setupPyb.installPyb(context)
-	setupPyb.installTerminalS()
+	setupPyb.setup(context)
 	
 	/* 1. 安装pyb库 */
 	const installPyb = vscode.commands.registerCommand("cfpyb.installPyb", () => {
 		setupPyb.installPyb(context, true)
 	})
-
 
 	/* 2. 串口选择 */
 	const selectSp = vscode.commands.registerCommand('cfpyb.selectSp', () => {
@@ -67,12 +65,23 @@ export function activate(context: vscode.ExtensionContext) {
 
 	/* 11. 图片批量处理 */
 	const opPicBatch = vscode.commands.registerCommand("cfpyb.opPicBatch", uri => {
-		console.log("xxxxxxxxxxxx")
 		opPicture.toBmpBatch(uri.path)
 	})
 
+	/* 12. 还原 */
+	const recPyb = vscode.commands.registerCommand("cfpyb.recPyb", () => {
+		console.log("还原")
+
+		// upToCF.recoverPyb(context)
+	})
+
+	/* 13. 初始化 */
+	const setup = vscode.commands.registerCommand("cfpyb.setup", () => {
+		setupPyb.setup(context)
+	})
+
 	context.subscriptions.push(selectSp, enterRepl, uploadFile, uploadDir, 
-		openApiDoc, installPyb, reboot, opPic, opPicBatch);
+		openApiDoc, installPyb, reboot, opPic, opPicBatch, recPyb, setup);
 }
 
 
