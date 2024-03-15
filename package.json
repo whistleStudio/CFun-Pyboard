@@ -5,6 +5,7 @@
   "version": "0.3.7",
   "icon": "./src/img/cfpyb-icon.png",
   "publisher": "WhistleWang",
+  "keywords": ["创趣", "智能主控", "实验箱"],
   "engines": {
     "vscode": "^1.86.0"
   },

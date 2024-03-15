@@ -26,8 +26,7 @@ python相关的系统环境配置就不赘述了，网上资料有很多
 
 [官网地址] https://www.python.org/downloads/
 
-[百度网盘python3.12.2]链接：https://pan.baidu.com/s/1hf7XskfIvzsR6qXwgv62vQ 
-提取码：qo2e 
+[百度网盘python3.12.2]链接：https://pan.baidu.com/s/1hf7XskfIvzsR6qXwgv62vQ 提取码：qo2e 
 
 <br>
 
@@ -154,6 +153,19 @@ REPL (read-eval-print-loop)交互式调试。串口已连接状态下，当编�
 <img src="https://whistlestudio-1300400818.cos.ap-nanjing.myqcloud.com/cfun/cfpyb-ext/readme/文档说明.gif"/>
 
 <br>
+
+<br>
+
+### 😺 其他
+
+Ctrl+Shift+P 输入指令
+
+| 指令            | 功能                                                         |
+| --------------- | ------------------------------------------------------------ |
+| 初始化cfpyb扩展 | 手动初始化，如pyb库,  repl调试工具未安装，将尝试安装；注意初始化不会更新pyb库 |
+| 更新pyb库       | 强制更新安装pyb库                                            |
+
+
 
 <br>
 
