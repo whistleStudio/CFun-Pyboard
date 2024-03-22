@@ -44,7 +44,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	/* 7. 打开接口文档 */
 	const openApiDoc = vscode.commands.registerCommand("cfpyb.openApiDoc", () => {
-		exec("start https://cfunworld.com/#/documents")
+		exec("start https://dict.cfunworld.com/apidoc/cfpyb/")
 	})
 	
 	/* 8. 侧边栏示例 */
@@ -70,9 +70,8 @@ export function activate(context: vscode.ExtensionContext) {
 
 	/* 12. 还原 */
 	const recPyb = vscode.commands.registerCommand("cfpyb.recPyb", () => {
-		console.log("还原")
-
-		// upToCF.recoverPyb(context)
+		// console.log("还原")
+		upToCF.recoverPyb(context)
 	})
 
 	/* 13. 初始化 */
