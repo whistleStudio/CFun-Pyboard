@@ -2,7 +2,7 @@
   "name": "cfpyb",
   "displayName": "cfpyb",
   "description": "an extension for CFunWorld products",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "icon": "./src/img/cfpyb-icon.png",
   "publisher": "WhistleWang",
   "keywords": [
