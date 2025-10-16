@@ -8,7 +8,9 @@ export default {
       ? `${context.extensionPath}/src/pyblib/pyb-0.0.0-py3-none-any.whl --force-reinstall`
       : `${context.extensionPath}/src/pyblib/pyb-0.0.0-py3-none-any.whl`;
     let hint = isForce ? `更新` : `安装`;
-    exec(`python -m pip install ${cmd}`, (error, stdout, stderr) => {
+    const pythonPath = vscode.workspace.getConfiguration('python').get<string>('defaultInterpreterPath') ?? 'python';
+    console.log('Using Python interpreter at:', pythonPath);
+    exec(`${pythonPath} -m pip install ${cmd}`, (error, stdout, stderr) => {
       if (error) {
         console.error(error);
         vscode.window.showErrorMessage(`脚本运行错误: ${error.message}`);
